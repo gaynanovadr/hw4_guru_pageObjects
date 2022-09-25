@@ -1,25 +1,17 @@
 package com.demoqa.tests;
 
-import com.beust.jcommander.IStringConverter;
 import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationFormPage;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 
 public class AuthorizationFormTest {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
-    String firstName = "Dinara";
-    String lastName = "Gaynanova";
-    String email = "gaynanovadr@gmail.ru";
+    String firstName = "Di";
+    String lastName = "Ga";
+    String email = "gay@gmail.ru";
     String number = "8917345678";
     String date = "31 July,1988";
     String gender = "Female";
@@ -30,6 +22,9 @@ public class AuthorizationFormTest {
     String address = "Some address";
     String state = "NCR";
     String city = "Noida";
+    String day = "31";
+    String month = "July";
+    String year = "1988";
 
     @BeforeAll
     static void setUp() {
@@ -46,7 +41,7 @@ public class AuthorizationFormTest {
                 .setEmail(email)
                 .setGender(gender)
                 .setNumber(number)
-                .setBirthDate("31", "July", "1988")
+                .setBirthDate(day, month, year)
                 .setSubject(subject)
                 .setHobby(hobby)
                 .uploadFile(path)
@@ -55,7 +50,8 @@ public class AuthorizationFormTest {
                 .submit();
 
         registrationFormPage.checkResultTableVisibility()
-                .checkResultTableData(firstName, lastName, email, number, date, gender, pic, address);
+                .checkResultTableData(firstName, lastName, email, number, date, gender,
+                                        pic, address, subject, hobby, state, city);
     }
 
     @Test
