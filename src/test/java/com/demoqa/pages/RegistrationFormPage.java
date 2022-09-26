@@ -12,11 +12,11 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationFormPage {
     private static final String TEXT = "Student Registration Form";
-    private CalendarComponent calendarComponent = new CalendarComponent();
-    private ResultTableComponent resultTableComponent = new ResultTableComponent();
-    private UploadFileComponent uploadFileComponent = new UploadFileComponent();
+    private final CalendarComponent calendarComponent = new CalendarComponent();
+    private final ResultTableComponent resultTableComponent = new ResultTableComponent();
+    private final UploadFileComponent uploadFileComponent = new UploadFileComponent();
 
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
             numberInput = $("#userNumber"),
@@ -110,7 +110,7 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage checkResultTableData(String ... strings) {
+    public RegistrationFormPage checkResultTableData(String... strings) {
         resultTableComponent.checkResults(strings);
         return this;
     }
